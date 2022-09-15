@@ -1,0 +1,6 @@
+D:\Vs_Projects\GameServer\AphliyServer\bin\Debug\AphliyServer.dll
+D:\Vs_Projects\GameServer\AphliyServer\bin\Debug\AphliyServer.pdb
+D:\Vs_Projects\GameServer\AphliyServer\obj\Debug\AphliyServer.csproj.AssemblyReference.cache
+D:\Vs_Projects\GameServer\AphliyServer\obj\Debug\AphliyServer.csproj.CoreCompileInputs.cache
+D:\Vs_Projects\GameServer\AphliyServer\obj\Debug\AphliyServer.dll
+D:\Vs_Projects\GameServer\AphliyServer\obj\Debug\AphliyServer.pdb

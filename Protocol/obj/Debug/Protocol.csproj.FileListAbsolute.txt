@@ -1,0 +1,8 @@
+D:\Vs_Projects\GameServer\Protocol\bin\Debug\Protocol.dll
+D:\Vs_Projects\GameServer\Protocol\bin\Debug\Protocol.pdb
+D:\Vs_Projects\GameServer\Protocol\obj\Debug\Protocol.csproj.AssemblyReference.cache
+D:\Vs_Projects\GameServer\Protocol\obj\Debug\Protocol.csproj.CoreCompileInputs.cache
+D:\Vs_Projects\GameServer\Protocol\obj\Debug\Protocol.dll
+D:\Vs_Projects\GameServer\Protocol\obj\Debug\Protocol.pdb
+D:\BaiduNetdiskDownload\Unity\Dome\4.DouDiZhu\Project\Crad\Assets\Plugins\Protocol.dll
+D:\BaiduNetdiskDownload\Unity\Dome\4.DouDiZhu\Project\Crad\Assets\Plugins\Protocol.pdb
