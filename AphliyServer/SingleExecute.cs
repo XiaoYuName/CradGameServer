@@ -12,12 +12,30 @@ namespace AphliyServer
     /// </summary>
     public class SingleExecute
     {
+        private static SingleExecute instance = null;
+        private static object lo = new object();
+
+        /// <summary>
+        /// 单例
+        /// </summary>
+        public static SingleExecute Instance
+        {
+            get
+            {
+                lock (lo)
+                {
+                    return instance ?? (instance = new SingleExecute());
+                }
+                
+            }
+        }
+
         /// <summary>
         /// 互斥锁
         /// </summary>
         public Mutex Mutex;
 
-        public SingleExecute()
+        private SingleExecute()
         {
             Mutex = new Mutex();
         }

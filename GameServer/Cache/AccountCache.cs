@@ -15,10 +15,12 @@ namespace GameServer.Cache
         /// 用来存储账号的ID   
         /// </summary>
         private ConcurrentInt id = new ConcurrentInt(-1);
+
         /// <summary>
         /// 账号对应的数据模型缓存区
         /// </summary>
         private Dictionary<string, AccountModel> AccountModelDict = new Dictionary<string, AccountModel>();
+
         /// <summary>
         /// 判断服务器是否已经有这个账号
         /// </summary>
@@ -28,6 +30,7 @@ namespace GameServer.Cache
         {
             return AccountModelDict.ContainsKey(account);
         }
+
         /// <summary>
         /// 创建账号数据模型信息
         /// </summary>
@@ -37,6 +40,7 @@ namespace GameServer.Cache
         {
             AccountModelDict.TryAdd(accout, new AccountModel(id.Add_Get(), accout, password));
         }
+
         /// <summary>
         /// 获取账号对应的数据模型
         /// </summary>
@@ -46,6 +50,7 @@ namespace GameServer.Cache
         {
             return AccountModelDict[account];
         }
+
         /// <summary>
         /// 账号密码是否匹配
         /// </summary>
@@ -57,12 +62,13 @@ namespace GameServer.Cache
             AccountModel model = AccountModelDict[account];
             return model.Password == password;
         }
-        
+
         /// <summary>
         /// 账号对应的连接对象
         /// </summary>
-        private Dictionary<string, ClientPeer> accClientPeers = new Dictionary<string, ClientPeer>();
-        private Dictionary<ClientPeer, string> ClientaccPeers = new Dictionary<ClientPeer, string>();
+        private Dictionary<string, ClientPeer> accClientDict = new Dictionary<string, ClientPeer>();
+
+        private Dictionary<ClientPeer, string> clientaccDic = new Dictionary<ClientPeer, string>();
 
         /// <summary>
         /// 判断账号是否在线
@@ -71,9 +77,9 @@ namespace GameServer.Cache
         /// <returns>如果在线返回true,否则返回false</returns>
         public bool IsOnline(string accout)
         {
-            return accClientPeers.ContainsKey(accout);
+            return accClientDict.ContainsKey(accout);
         }
-        
+
         /// <summary>
         /// 判断账号是否在线
         /// </summary>
@@ -81,13 +87,51 @@ namespace GameServer.Cache
         /// <returns>如果在线返回true,否则返回false</returns>
         public bool IsOnline(ClientPeer peer)
         {
-            return ClientaccPeers.ContainsKey(peer);
+            return clientaccDic.ContainsKey(peer);
         }
-        
-        public void AddPeer(string account, ClientPeer peer)
+
+        /// <summary>
+        /// 上线客户端连接对象
+        /// </summary>
+        /// <param name="peer">连接对象</param>
+        public void OnLine(ClientPeer peer, string account)
         {
-            if(accClientPeers.ContainsKey(account))
-                accClientPeers.Add(account,peer);
+            accClientDict.Add(account, peer);
+            clientaccDic.Add(peer, account);
+        }
+
+        /// <summary>
+        /// 下线客户端连接对象
+        /// </summary>
+        /// <param name="peer"></param>
+        public void Offline(ClientPeer peer)
+        {
+            string account = clientaccDic[peer];
+            clientaccDic.Remove(peer);
+            accClientDict.Remove(account);
+        }
+
+        /// <summary>
+        /// 下线客户端连接对象
+        /// </summary>
+        /// <param name="account">账号</param>
+        public void Offline(string account)
+        {
+            ClientPeer client = accClientDict[account];
+            accClientDict.Remove(account);
+            clientaccDic.Remove(client);
+        }
+
+        /// <summary>
+        /// 获取在线玩家的ID
+        /// </summary>
+        /// <param name="peer">连接对象</param>
+        /// <returns></returns>
+        public int GetID(ClientPeer peer)
+        {
+            string account = clientaccDic[peer];
+            AccountModel model = AccountModelDict[account];
+            return model.id;
         }
     }
 }

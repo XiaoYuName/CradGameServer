@@ -6,3 +6,5 @@ D:\Vs_Projects\GameServer\Protocol\obj\Debug\Protocol.dll
 D:\Vs_Projects\GameServer\Protocol\obj\Debug\Protocol.pdb
 D:\BaiduNetdiskDownload\Unity\Dome\4.DouDiZhu\Project\Crad\Assets\Plugins\Protocol.dll
 D:\BaiduNetdiskDownload\Unity\Dome\4.DouDiZhu\Project\Crad\Assets\Plugins\Protocol.pdb
+D:\Unity_Projects\GITHubProject\Crad\Assets\Plugins\Protocol.dll
+D:\Unity_Projects\GITHubProject\Crad\Assets\Plugins\Protocol.pdb

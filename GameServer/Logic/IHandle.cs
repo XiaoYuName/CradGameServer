@@ -15,7 +15,7 @@ namespace GameServer.Logic
         /// </summary>
         /// <param name="client">客户端对象</param>
         /// <param name="subCode">子操作码</param>
-        /// <param name="value">数据</param>
+        /// <param name="value">数据</param>      //prompt : 所有处理都要单线程处理
         public void OnReceive(ClientPeer client, int subCode, object value);
     }
 }
